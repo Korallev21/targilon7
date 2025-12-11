@@ -6,4 +6,8 @@ console.log(1) and console.log(4) are synchronous operations, so they execute im
 Promise.resolve().then(() => console.log(3)) is placed into the Microtask Queue. Once the synchronous code finishes, the Event Loop processes all Microtasks before moving on to Macrotasks (Output: 3).
 setTimeout(() => console.log(2), 0) is a Macrotask . Even with a delay of 0 milliseconds, it must wait for the Call Stack and the entire Microtask Queue to empty before it can be processed (Output: 2).
 
-2-
+2-This result also shows the Event Loop's strict priority: synchronous code, then Microtask Queue, and finally the Macrotask Queue.
+The initial setTimeout(1) is a Macrotask Queue.
+The initial Promise.resolve().then block is immediately placed into and executed from the Microtask Queue(2)
+The inner setTimeout(3) is added to the Macrotask Queue, but the inner Promise.resolve().then(4) is added back to the same Microtask Queue, allowing it to execute immediately.
+Only after the entire Microtask Queue is completely cleared does the Event Loop move to the Macrotask Queue, processing the waiting tasks in the order they were submitted: first setTimeout(1), then setTimeout(3), resulting in the final output sequence.
