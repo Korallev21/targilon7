@@ -1,5 +1,5 @@
 const getArticle = (req, res) => {
-    res.send('Hellow world')
+    res.render('article.ejs',{})
 }
 
 module.exports = { getArticle }
