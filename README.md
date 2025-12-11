@@ -20,3 +20,12 @@ Console.log(5) is also synchronous so it's previous to the await Promise.resolve
 Then it sends us to level3() - inside there is console.log(1) synchronous.
 Then console.log(2) and console.log(3).
 Finish with level3() we're moving to level2() by order, inside there is console.log(5) and then moving to level1() and write 7.
+
+5- The only difference between this code and the one before is this instead of await level2() there is
+level2();
+So, all the numbers that came before 2 are the same- 6 4 1 and also 2.
+When using await level2(), execution within level1 is paused until all level2s have finished, which pushes console.log(7) to the Microtask Queue .
+When using level2(), level2() is called synchronously as a normal function.
+The level1 function is not paused and does not release control to the for loop.
+The code continues to run synchronously into level2(), it immediately proceeds to console.log(7).
+Then, we're moving exactly as before - 3 and then 5.

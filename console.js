@@ -13,7 +13,7 @@ console.log(5);
 }
 async function level1() {
 console.log(6);
-await level2();
+level2();
 console.log(7);
 }
 level1();
