@@ -1,8 +1,7 @@
 const express = require('express')
 var app = express()
 
-app.get('/article', (req, res) => {
-  res.send('Hello world')
-})
+const articles = require ('./routes/articles');
+app.use ('/article', articles);
 
 app.listen(8080)
