@@ -1,7 +1,8 @@
 const express = require('express')
 var app = express()
 
-const articles = require ('./routes/articles');
-app.use ('/article', articles);
+const articles = require ('../controllers/articles');
+const router = require('./routes/articles');
+app.use ('/', articles.getArticle);
 
-app.listen(8080)
+module.exports = router
