@@ -11,3 +11,9 @@ The initial setTimeout(1) is a Macrotask Queue.
 The initial Promise.resolve().then block is immediately placed into and executed from the Microtask Queue(2)
 The inner setTimeout(3) is added to the Macrotask Queue, but the inner Promise.resolve().then(4) is added back to the same Microtask Queue, allowing it to execute immediately.
 Only after the entire Microtask Queue is completely cleared does the Event Loop move to the Macrotask Queue, processing the waiting tasks in the order they were submitted: first setTimeout(1), then setTimeout(3), resulting in the final output sequence.
+
+3- 4 is logged synchronously so it's the first one.
+then, the demo function calls the async function demo() which inside there is console.log(1) who is a synchronous.
+Console.log(5) is also synchronous so it's previous to the await Promise.resolve() 2 and 3 commands which are Microtasks.
+
+4-
