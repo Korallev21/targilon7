@@ -16,4 +16,7 @@ Only after the entire Microtask Queue is completely cleared does the Event Loop 
 then, the demo function calls the async function demo() which inside there is console.log(1) who is a synchronous.
 Console.log(5) is also synchronous so it's previous to the await Promise.resolve() 2 and 3 commands which are Microtasks.
 
-4-
+4- The code starts with level1(), inside this function  there is console.log(6) which is synchronous so this is the first one, next console.log(4) is synchronous which inside await level2() function.
+Then it sends us to level3() - inside there is console.log(1) synchronous.
+Then console.log(2) and console.log(3).
+Finish with level3() we're moving to level2() by order, inside there is console.log(5) and then moving to level1() and write 7.

@@ -1,10 +1,19 @@
-async function demo() {
+async function level3() {
 console.log(1);
-await Promise.resolve();
-console.log(2);
-await Promise.resolve();
+await new Promise((resolve,reject) => {
+console.log(2)
+resolve()
+});
 console.log(3);
 }
+async function level2() {
 console.log(4);
-demo();
+await level3();
 console.log(5);
+}
+async function level1() {
+console.log(6);
+await level2();
+console.log(7);
+}
+level1();
