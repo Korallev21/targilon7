@@ -8,6 +8,6 @@ router.route('/')
 
 router.route('/:id')
         .get(controller.getArticleById)
-        //.patch(controller.updateArticle)
-        //.delete(controller.deleteArticle)
+        .patch(controller.updateArticle)
+        .delete(controller.deleteArticle)
 module.exports = router

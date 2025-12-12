@@ -19,3 +19,31 @@ exports.createArticle = (req, res) => {
     const newArticle = Article.createArticle(title, content)
     res.status(201).location(`/api/articles/${newArticle.id}`).end()
 }
+
+exports.updateArticle = (req, res) => {
+    const id = parseInt(req.params.id)
+    const { title, content } = req.body
+    
+    if (title === undefined && content === undefined) {
+        return res.status(400).json({ error: 'At least one field required for update' })
+    }
+
+    const updatedArticle = Article.updateArticle(id, title, content)
+    
+    if (!updatedArticle) {
+        return res.status(404).json({ error: 'Article not found' })
+    }
+    
+    res.status(200).json(updatedArticle)
+}
+
+exports.deleteArticle = (req, res) => {
+    const id = parseInt(req.params.id)
+    const success = Article.deleteArticle(id)
+    
+    if (!success) {
+        return res.status(404).json({ error: 'Article not found' })
+    }
+    
+    res.status(204).end() 
+}
