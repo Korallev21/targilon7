@@ -1,11 +1,7 @@
+const articles = require('../models/articles')
 const getArticle = (req, res) => {
-    res.render('article.ejs',{ foo : {
-        id : 1,
-        title : 'My cake',
-        author: 'John Doe',
-        published: 'February 11, 2024',
-        content: 'Lorem ipsum'
-    }})
+    const id = 1
+    res.render('article.ejs',{ foo : articles.getArticle(id) })
 }
 
 module.exports = { getArticle }
